@@ -102,13 +102,13 @@ public class GoogleClosureCompressorProcessor
        * TODO remove synchronization after the <a
        * href="http://code.google.com/p/closure-compiler/issues/detail?id=781">issue</a> is fixed
        */
-      synchronized (this) {
+      // synchronized (this) {
         compilationLevel.setOptionsForCompilationLevel(compilerOptions);
         // make it play nice with GAE
         compiler.disableThreads();
         compiler.initOptions(compilerOptions);
         result = compiler.compile(externs, input, compilerOptions);
-      }
+      // }
       if (result.success) {
         writer.write(compiler.toSource());
       } else {
